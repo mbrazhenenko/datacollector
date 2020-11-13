@@ -240,6 +240,7 @@ public final class MSQueryUtil {
     String captureInstanceName = tableName.substring("cdc.".length(), tableName.length() - "_CT".length());
     StringBuilder query = new StringBuilder();
     String declare_from_lsn;
+    String declare_from_lsn_min = "";
     String declare_to_lsn;
     String declare_to_lsn2 = "";
     String where_clause;
@@ -287,6 +288,9 @@ public final class MSQueryUtil {
       declare_from_lsn = String.format("DECLARE @start_lsn binary(10) = 0x%s; ",
           offsetMap.get(CDC_START_LSN));
 
+      declare_from_lsn_min = String.format("DECLARE @min_lsn binary(10) = sys.fn_cdc_get_min_lsn (N'%s') if (@min_lsn > @start_lsn) BEGIN SET @start_lsn = @min_lsn END ",
+          captureInstanceName
+      
       String cdcOperation = Strings.isNullOrEmpty(offsetMap.get(CDC_OPERATION)) ? "2" : offsetMap.get(CDC_OPERATION);
 
       String condition1 = String.format(
@@ -325,6 +329,7 @@ public final class MSQueryUtil {
 
 
     query.append(declare_from_lsn);
+    query.append(declare_from_lsn_min);
     query.append(declare_to_lsn);
     query.append(declare_to_lsn2);
 
