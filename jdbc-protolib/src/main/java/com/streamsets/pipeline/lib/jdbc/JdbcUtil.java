@@ -420,7 +420,7 @@ public class JdbcUtil {
       final String qualifiedOffsetColumn = TableContextUtil.getQuotedObjectName(offsetColumn, quoteChar.getQuoteCharacter());
       final String minMaxOffsetQuery = String.format(minMaxQuery, qualifiedOffsetColumn, qualifiedTableName);
       
-      if (vendor == DatabaseVendor.SQL_SERVER && qualifiedOffsetColumn == "__$sdc.txn_window"){
+      if (vendor == DatabaseVendor.SQL_SERVER && qualifiedOffsetColumn.equals("__$sdc.txn_window")){
         continue;
       }
       
