@@ -43,12 +43,12 @@ public class JdbcConnection {
   @ConfigDef(
       displayMode = ConfigDef.DisplayMode.BASIC,
       required = true,
-      type = ConfigDef.Type.STRING,
+      type = ConfigDef.Type.CREDENTIAL,
       label = "JDBC Connection String",
       displayPosition = 10,
       group = "#0"
   )
-  public String connectionString = "";
+  public CredentialValue connectionString;
 
   @ConfigDef(
       displayMode = ConfigDef.DisplayMode.ADVANCED,
