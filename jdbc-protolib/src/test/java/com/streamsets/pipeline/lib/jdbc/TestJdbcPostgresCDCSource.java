@@ -33,7 +33,7 @@ public class TestJdbcPostgresCDCSource {
 
   private void createConfigBeans() {
     BrandedHikariPoolConfigBean hikariConfigBean = new BrandedHikariPoolConfigBean();
-    hikariConfigBean.connectionString = "jdbc:postgresql://localhost:5432/sdctest";
+    hikariConfigBean.connectionString = () -> "jdbc:postgresql://localhost:5432/sdctest";
     hikariConfigBean.useCredentials = true;
     hikariConfigBean.username = () -> username;
     hikariConfigBean.password = () -> password;
