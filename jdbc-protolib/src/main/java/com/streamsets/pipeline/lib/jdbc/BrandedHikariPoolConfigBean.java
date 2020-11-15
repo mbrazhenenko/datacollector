@@ -29,7 +29,7 @@ public class BrandedHikariPoolConfigBean extends HikariPoolConfigBean {
       displayPosition = 10,
       group = "JDBC"
   )
-  public CredentialValue connectionString = "";
+  public CredentialValue connectionString;
 
   @ConfigDef(
       displayMode = ConfigDef.DisplayMode.ADVANCED,
