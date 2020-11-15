@@ -304,7 +304,7 @@ public class TestAmazonS3Executor {
     config.s3Config.connection.useRegion = true;
     config.s3Config.connection.region = AwsRegion.OTHER;
     config.s3Config.connection.endpoint = "http://localhost:" + port;
-    config.s3Config.bucketTemplate = "${record:attribute('bucket')}";
+    config.s3Config.bucketTemplate = () -> "${record:attribute('bucket')}";
     config.s3Config.connection.awsConfig = new AWSConfig();
     config.s3Config.connection.awsConfig.awsAccessKeyId = () -> "foo";
     config.s3Config.connection.awsConfig.awsSecretAccessKey = () -> "bar";
