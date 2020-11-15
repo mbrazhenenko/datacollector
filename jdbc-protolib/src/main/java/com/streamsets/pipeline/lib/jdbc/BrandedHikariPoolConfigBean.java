@@ -24,12 +24,12 @@ public class BrandedHikariPoolConfigBean extends HikariPoolConfigBean {
   @ConfigDef(
       displayMode = ConfigDef.DisplayMode.BASIC,
       required = true,
-      type = ConfigDef.Type.STRING,
+      type = ConfigDef.Type.CREDENTIAL,
       label = "JDBC Connection String",
       displayPosition = 10,
       group = "JDBC"
   )
-  public String connectionString = "";
+  public CredentialValue connectionString = "";
 
   @ConfigDef(
       displayMode = ConfigDef.DisplayMode.ADVANCED,
@@ -69,12 +69,12 @@ public class BrandedHikariPoolConfigBean extends HikariPoolConfigBean {
 
   @Override
   public String getConnectionString() {
-    return connectionString;
+    return connectionString.get();
   }
 
   @Override
   public DatabaseVendor getVendor() {
-    return DatabaseVendor.forUrl(connectionString);
+    return DatabaseVendor.forUrl(connectionString.get());
   }
 
   @Override
