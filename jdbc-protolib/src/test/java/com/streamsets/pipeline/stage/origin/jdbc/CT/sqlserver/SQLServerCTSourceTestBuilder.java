@@ -196,7 +196,7 @@ public class SQLServerCTSourceTestBuilder {
   public SQLServerCTSource build() {
     BrandedHikariPoolConfigBean hikariPoolConfigBean = new BrandedHikariPoolConfigBean();
     hikariPoolConfigBean.useCredentials = useCredentials;
-    hikariPoolConfigBean.connectionString = connectionString;
+    hikariPoolConfigBean.connectionString = () -> connectionString;
     hikariPoolConfigBean.username = () -> username;
     hikariPoolConfigBean.password = () -> password;
     hikariPoolConfigBean.driverClassName = driverClassName;
