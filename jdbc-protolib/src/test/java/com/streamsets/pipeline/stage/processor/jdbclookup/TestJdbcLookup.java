@@ -106,7 +106,7 @@ public class TestJdbcLookup {
     JdbcLookupDProcessor processor = new JdbcLookupDProcessor();
     processor.hikariConfigBean = new JdbcHikariPoolConfigBean();
     processor.hikariConfigBean.connection = new JdbcConnection();
-    processor.hikariConfigBean.connection.connectionString = h2ConnectionString;
+    processor.hikariConfigBean.connection.connectionString = () -> h2ConnectionString;
     processor.hikariConfigBean.connection.useCredentials = true;
     processor.hikariConfigBean.connection.username = () -> username;
     processor.hikariConfigBean.connection.password = () -> password;
@@ -351,7 +351,7 @@ public class TestJdbcLookup {
     List<JdbcFieldColumnMapping> columnMappings = ImmutableList.of(new JdbcFieldColumnMapping("P_ID", "[2]"));
 
     JdbcLookupDProcessor processor = createProcessor();
-    processor.hikariConfigBean.connection.connectionString = "bad connection string";
+    processor.hikariConfigBean.connection.connectionString = () -> "bad connection string";
 
     ProcessorRunner processorRunner = new ProcessorRunner.Builder(JdbcLookupDProcessor.class, processor)
         .addConfiguration("query", listQuery)
