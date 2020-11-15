@@ -32,14 +32,14 @@ public class PrivateHikariConfigBean {
   @ConfigDef(
       displayMode = ConfigDef.DisplayMode.BASIC,
       required = true,
-      type = ConfigDef.Type.STRING,
+      type = ConfigDef.Type.CREDENTIAL,
       label = "JDBC Connection String",
       displayPosition = 10,
       group = "JDBC",
       dependsOn = "resolveSchema^",
       triggeredByValue = "true"
   )
-  public String connectionString = "";
+  public CredentialValue connectionString;
 
   @ConfigDef(
       displayMode = ConfigDef.DisplayMode.ADVANCED,
