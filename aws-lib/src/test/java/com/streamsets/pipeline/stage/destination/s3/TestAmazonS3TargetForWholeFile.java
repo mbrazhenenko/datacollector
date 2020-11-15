@@ -274,7 +274,7 @@ public class TestAmazonS3TargetForWholeFile extends AmazonS3TestSuite {
     s3Config.connection.useRegion = true;
     s3Config.connection.region = AwsRegion.OTHER;
     s3Config.connection.endpoint = "http://localhost:" + port;
-    s3Config.bucketTemplate = "${record:attribute('bucket')}";
+    s3Config.bucketTemplate = () -> "${record:attribute('bucket')}";
     s3Config.connection.awsConfig = new AWSConfig();
     s3Config.connection.awsConfig.awsAccessKeyId = () -> "foo";
     s3Config.connection.awsConfig.awsSecretAccessKey = () -> "bar";
