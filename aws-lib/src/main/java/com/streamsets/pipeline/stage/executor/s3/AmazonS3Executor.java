@@ -97,7 +97,7 @@ public class AmazonS3Executor extends BaseExecutor {
 
       try {
         // Calculate working file (the same for all task types)
-        String bucket = evaluate(record, "bucketTemplate", variables, config.s3Config.bucketTemplate);
+        String bucket = evaluate(record, "bucketTemplate", variables, config.s3Config.bucketTemplate.get());
         String objectPath = evaluate(record, "objectPath", variables, config.taskConfig.objectPath);
         if(bucket.isEmpty()) {
           throw new OnRecordErrorException(record, Errors.S3_EXECUTOR_0003);
