@@ -25,7 +25,7 @@ public class S3ConnectionTargetConfig extends S3ConnectionBaseConfig {
 
   @ConfigDef(
     required = true,
-    type = ConfigDef.Type.STRING,
+    type = ConfigDef.Type.CREDENTIAL,
     label = "Bucket",
     description = "Expression that will identify bucket for each record.",
     displayPosition = 20,
@@ -33,6 +33,6 @@ public class S3ConnectionTargetConfig extends S3ConnectionBaseConfig {
     elDefs = { RecordEL.class, TimeEL.class, TimeNowEL.class },
     group = "#0"
   )
-  public String bucketTemplate;
+  public CredentialValue bucketTemplate;
 
 }
