@@ -52,12 +52,12 @@ public class JdbcHikariPoolConfigBean extends HikariPoolConfigBean {
 
   @Override
   public String getConnectionString() {
-    return connection.connectionString;
+    return connection.connectionString.get();
   }
 
   @Override
   public DatabaseVendor getVendor() {
-    return DatabaseVendor.forUrl(connection.connectionString);
+    return DatabaseVendor.forUrl(connection.connectionString.get());
   }
 
   @Override
