@@ -84,10 +84,10 @@ public class JdbcConnectionVerifier extends ConnectionVerifier {
       connectionProps.put("password", connection.password.get());
     }
 
-    try (Connection conn = DriverManager.getConnection(connection.connectionString, connectionProps)) {
-      LOG.debug("Successfully connected to the database at {}", connection.connectionString);
+    try (Connection conn = DriverManager.getConnection(connection.connectionString.get(), connectionProps)) {
+      LOG.debug("Successfully connected to the database at {}", connection.connectionString.get());
     } catch (Exception e) {
-      LOG.debug(JdbcErrors.JDBC_00.getMessage(), connection.connectionString, e.getMessage(), e);
+      LOG.debug(JdbcErrors.JDBC_00.getMessage(), connection.connectionString.get(), e.getMessage(), e);
       issues.add(getContext().createConfigIssue("JDBC", "connection", JdbcErrors.JDBC_00, e.toString(), e));
     }
     return issues;
