@@ -82,7 +82,7 @@ public class AmazonS3Target extends BaseTarget {
     this.s3TargetConfigBean = s3TargetConfigBean;
     this.partitionTemplate = s3TargetConfigBean.partitionTemplate == null ? "" : s3TargetConfigBean.partitionTemplate;
     this.timeDriverTemplate = s3TargetConfigBean.timeDriverTemplate == null ? "" : s3TargetConfigBean.timeDriverTemplate;
-    this.bucketTemplate = s3TargetConfigBean.s3Config.bucketTemplate;
+    this.bucketTemplate = s3TargetConfigBean.s3Config.bucketTemplate.get();
     this.isErrorStage = isErrorStage;
   }
 
