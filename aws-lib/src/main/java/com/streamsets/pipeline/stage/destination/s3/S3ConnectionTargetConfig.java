@@ -29,7 +29,7 @@ public class S3ConnectionTargetConfig extends S3ConnectionBaseConfig {
     label = "Bucket",
     description = "Expression that will identify bucket for each record.",
     displayPosition = 20,
-    evaluation = ConfigDef.Evaluation.EXPLICIT,
+    evaluation = ConfigDef.Evaluation.IMPLICIT,
     elDefs = { RecordEL.class, TimeEL.class, TimeNowEL.class },
     group = "#0"
   )
